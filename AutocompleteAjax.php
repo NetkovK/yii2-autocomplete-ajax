@@ -165,7 +165,12 @@ class AutocompleteAjax extends InputWidget
                         $('#{$id}-hidden').val(ui.item.id);
                          $('#{$id}-hidden').change();
                     }
-                });
+                }).data('ui-autocomplete')._renderItem = function (ul, item) {
+                    return $('<li></li>')
+                     .data('item.autocomplete', item)
+                     .append(item.label)
+                     .appendTo(ul);
+                };
             ");
         }
         
